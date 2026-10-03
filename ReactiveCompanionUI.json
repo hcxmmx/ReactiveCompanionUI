@@ -1,0 +1,13 @@
+{
+  "id": "ReactiveCompanionUI",
+  "name": "Reactive Companion UI",
+  "pck_name": "ReactiveCompanionUI",
+  "author": "hcxmmx",
+  "description": "A reactive Chino companion for the game's UI.",
+  "version": "0.1.0",
+  "has_pck": true,
+  "has_dll": true,
+  "affects_gameplay": false,
+  "min_game_version": "0.111.0",
+  "dependencies": []
+}

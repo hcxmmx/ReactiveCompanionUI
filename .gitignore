@@ -1,0 +1,16 @@
+.godot/
+.vs/
+bin/
+obj/
+dist/
+local.props
+.validation-cache/
+.godot-test-data/
+export_templates/
+feature_profiles/
+script_templates/
+text_editor_themes/
+*.log
+*.pck
+*.dll
+*.pdb

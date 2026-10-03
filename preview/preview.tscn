@@ -1,0 +1,43 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://preview/preview.gd" id="1_preview"]
+[ext_resource type="PackedScene" path="res://ReactiveCompanionUI_hcxmmx/scenes/companion_hud.tscn" id="2_hud"]
+
+[node name="Preview" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_preview")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.07, 0.12, 0.15, 1)
+
+[node name="CompanionHud" parent="." instance=ExtResource("2_hud")]
+layout_mode = 1
+
+[node name="Instructions" type="Label" parent="."]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 24.0
+offset_right = 820.0
+offset_bottom = 70.0
+theme_override_font_sizes/font_size = 22
+text = "Space: switch pose    1-5: expressions"
+
+[node name="OpenExpressionPicker" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1010.0
+offset_top = 24.0
+offset_right = 1246.0
+offset_bottom = 66.0
+focus_mode = 0
+text = "打开表情选择器"

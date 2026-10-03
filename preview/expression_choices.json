@@ -1,0 +1,72 @@
+{
+  "happy": {
+    "battle": {
+      "eye": 2,
+      "eye_source": "side_2",
+      "mouth": 0,
+      "mouth_source": "side_2"
+    },
+    "front": {
+      "eye": 21,
+      "eye_source": "front_6",
+      "mouth": 17,
+      "mouth_source": "front_6"
+    }
+  },
+  "idle": {
+    "battle": {
+      "eye": 1,
+      "eye_source": "side_2",
+      "mouth": 0,
+      "mouth_source": "side_2"
+    },
+    "front": {
+      "eye": 14,
+      "eye_source": "front_9",
+      "mouth": 12,
+      "mouth_source": "front_9"
+    }
+  },
+  "surprised": {
+    "battle": {
+      "eye": 7,
+      "eye_source": "side_1",
+      "mouth": 3,
+      "mouth_source": "side_2"
+    },
+    "front": {
+      "eye": 14,
+      "eye_source": "front_6",
+      "mouth": 3,
+      "mouth_source": "front_4"
+    }
+  },
+  "thinking": {
+    "battle": {
+      "eye": 4,
+      "eye_source": "side_2",
+      "mouth": 18,
+      "mouth_source": "side_3"
+    },
+    "front": {
+      "eye": 8,
+      "eye_source": "front_6",
+      "mouth": 1,
+      "mouth_source": "front_4"
+    }
+  },
+  "worried": {
+    "battle": {
+      "eye": 5,
+      "eye_source": "side_3",
+      "mouth": 15,
+      "mouth_source": "side_3"
+    },
+    "front": {
+      "eye": 3,
+      "eye_source": "front_6",
+      "mouth": 1,
+      "mouth_source": "front_6"
+    }
+  }
+}

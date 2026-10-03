@@ -1,0 +1,456 @@
+[gd_scene load_steps=14 format=3]
+
+[ext_resource type="Script" path="res://ReactiveCompanionUI_hcxmmx/scripts/companion_visual.gd" id="1_visual"]
+[ext_resource type="Texture2D" path="res://ReactiveCompanionUI_hcxmmx/images/chino/front.png" id="2_front"]
+[ext_resource type="Texture2D" path="res://ReactiveCompanionUI_hcxmmx/images/chino/side.png" id="3_side"]
+[ext_resource type="Script" path="res://ReactiveCompanionUI_hcxmmx/scripts/portrait_hit.gd" id="4_hit"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_front_body"]
+atlas = ExtResource("2_front")
+region = Rect2(0, 0, 230, 538)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_front_eye"]
+atlas = ExtResource("2_front")
+region = Rect2(238, 280, 121, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_front_mouth"]
+atlas = ExtResource("2_front")
+region = Rect2(481, 0, 14, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_side_body"]
+atlas = ExtResource("3_side")
+region = Rect2(0, 0, 306, 534)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_side_eye"]
+atlas = ExtResource("3_side")
+region = Rect2(314, 74, 115, 74)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_side_mouth"]
+atlas = ExtResource("3_side")
+region = Rect2(430, 0, 12, 14)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bubble"]
+bg_color = Color(0.06, 0.09, 0.13, 0.88)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.48, 0.78, 0.91, 0.85)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button"]
+bg_color = Color(0.07, 0.12, 0.17, 0.87)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.45, 0.76, 0.87, 0.85)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button_hover"]
+bg_color = Color(0.14, 0.25, 0.32, 0.96)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.65, 0.91, 1, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="CompanionHud" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_visual")
+
+[node name="PortraitPivot" type="Control" parent="."]
+layout_mode = 1
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 180.0
+offset_top = -538.0
+offset_right = 486.0
+pivot_offset = Vector2(153, 538)
+scale = Vector2(0.6, 0.6)
+mouse_filter = 2
+script = ExtResource("4_hit")
+
+[node name="PortraitGroup" type="CanvasGroup" parent="PortraitPivot"]
+
+[node name="FrontPose" type="Control" parent="PortraitPivot/PortraitGroup"]
+layout_mode = 0
+offset_left = 38.0
+offset_right = 268.0
+offset_bottom = 538.0
+mouse_filter = 2
+
+[node name="Body" type="TextureRect" parent="PortraitPivot/PortraitGroup/FrontPose"]
+layout_mode = 0
+offset_right = 230.0
+offset_bottom = 538.0
+mouse_filter = 2
+texture = SubResource("AtlasTexture_front_body")
+expand_mode = 1
+
+[node name="Eyes" type="TextureRect" parent="PortraitPivot/PortraitGroup/FrontPose"]
+layout_mode = 0
+offset_left = 55.0
+offset_top = 98.0
+offset_right = 176.0
+offset_bottom = 168.0
+mouse_filter = 2
+texture = SubResource("AtlasTexture_front_eye")
+expand_mode = 1
+
+[node name="Mouth" type="TextureRect" parent="PortraitPivot/PortraitGroup/FrontPose"]
+layout_mode = 0
+offset_left = 108.0
+offset_top = 182.0
+offset_right = 122.0
+offset_bottom = 199.0
+mouse_filter = 2
+texture = SubResource("AtlasTexture_front_mouth")
+expand_mode = 1
+
+[node name="SidePose" type="Control" parent="PortraitPivot/PortraitGroup"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_top = 4.0
+offset_right = 306.0
+offset_bottom = 538.0
+mouse_filter = 2
+
+[node name="Body" type="TextureRect" parent="PortraitPivot/PortraitGroup/SidePose"]
+layout_mode = 0
+offset_right = 306.0
+offset_bottom = 534.0
+mouse_filter = 2
+texture = SubResource("AtlasTexture_side_body")
+expand_mode = 1
+
+[node name="Eyes" type="TextureRect" parent="PortraitPivot/PortraitGroup/SidePose"]
+layout_mode = 0
+offset_left = 133.0
+offset_top = 94.0
+offset_right = 248.0
+offset_bottom = 168.0
+mouse_filter = 2
+texture = SubResource("AtlasTexture_side_eye")
+expand_mode = 1
+
+[node name="Mouth" type="TextureRect" parent="PortraitPivot/PortraitGroup/SidePose"]
+layout_mode = 0
+offset_left = 192.0
+offset_top = 182.0
+offset_right = 204.0
+offset_bottom = 196.0
+mouse_filter = 2
+texture = SubResource("AtlasTexture_side_mouth")
+expand_mode = 1
+
+[node name="InteractionToggle" type="Button" parent="."]
+layout_mode = 1
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 160.0
+offset_top = -324.0
+offset_right = 224.0
+offset_bottom = -292.0
+focus_mode = 0
+tooltip_text = "左键切换互动；打开调整后右键拖动可移动按钮组"
+theme_override_font_sizes/font_size = 17
+theme_override_styles/normal = SubResource("StyleBoxFlat_button")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button_hover")
+text = "互动"
+
+[node name="PeekButton" type="Button" parent="."]
+visible = false
+layout_mode = 1
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 160.0
+offset_top = -284.0
+offset_right = 224.0
+offset_bottom = -252.0
+focus_mode = 0
+tooltip_text = "看看当前抽牌堆顶部的卡"
+theme_override_font_sizes/font_size = 17
+theme_override_styles/normal = SubResource("StyleBoxFlat_button")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button_hover")
+text = "顶牌"
+
+[node name="PotionButton" type="Button" parent="."]
+visible = false
+layout_mode = 1
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 232.0
+offset_top = -284.0
+offset_right = 312.0
+offset_bottom = -252.0
+focus_mode = 0
+tooltip_text = "查看当前战斗结算时的基础掉药概率；遗物和其他 Mod 可能改变结果"
+theme_override_font_sizes/font_size = 17
+theme_override_styles/normal = SubResource("StyleBoxFlat_button")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button_hover")
+text = "掉药率"
+
+[node name="JugglingButton" type="Button" parent="."]
+visible = false
+layout_mode = 1
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 320.0
+offset_top = -284.0
+offset_right = 392.0
+offset_bottom = -252.0
+focus_mode = 0
+tooltip_text = "仅在拥有杂耍状态时，查询本回合已打出的攻击牌数"
+theme_override_font_sizes/font_size = 17
+theme_override_styles/normal = SubResource("StyleBoxFlat_button")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button_hover")
+text = "杂耍"
+
+[node name="RemovalButton" type="Button" parent="."]
+visible = false
+layout_mode = 1
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 160.0
+offset_top = -284.0
+offset_right = 224.0
+offset_bottom = -252.0
+focus_mode = 0
+tooltip_text = "战斗内外均可按当前进阶、商店删牌次数和遗物，估算下次商店删牌价格"
+theme_override_font_sizes/font_size = 17
+theme_override_styles/normal = SubResource("StyleBoxFlat_button")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button_hover")
+text = "删牌"
+
+[node name="SettingsButton" type="Button" parent="."]
+visible = false
+layout_mode = 1
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 160.0
+offset_top = -244.0
+offset_right = 224.0
+offset_bottom = -212.0
+focus_mode = 0
+tooltip_text = "分别调整智乃和对话框的位置、大小与透明度"
+theme_override_font_sizes/font_size = 17
+theme_override_styles/normal = SubResource("StyleBoxFlat_button")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button_hover")
+text = "调整"
+
+[node name="SlButton" type="Button" parent="."]
+visible = false
+layout_mode = 1
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 232.0
+offset_top = -244.0
+offset_right = 312.0
+offset_bottom = -212.0
+focus_mode = 0
+tooltip_text = "直接重载当前游戏存档"
+theme_override_font_sizes/font_size = 17
+theme_override_styles/normal = SubResource("StyleBoxFlat_button")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button_hover")
+text = "SL"
+
+[node name="SettingsPanel" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 24.0
+offset_top = 16.0
+offset_right = 326.0
+offset_bottom = 366.0
+mouse_filter = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_bubble")
+
+[node name="SettingsMargin" type="MarginContainer" parent="SettingsPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 14
+theme_override_constants/margin_bottom = 10
+
+[node name="SettingsContent" type="VBoxContainer" parent="SettingsPanel/SettingsMargin"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="SettingsTitle" type="Label" parent="SettingsPanel/SettingsMargin/SettingsContent"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 19
+text = "调整智乃与对话框"
+
+[node name="DragHint" type="Label" parent="SettingsPanel/SettingsMargin/SettingsContent"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 15
+text = "右键拖动智乃可移动位置"
+
+[node name="ControlsDragHint" type="Label" parent="SettingsPanel/SettingsMargin/SettingsContent"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 15
+text = "调整中右键拖动「互动」可移动按钮"
+
+[node name="ScaleRow" type="HBoxContainer" parent="SettingsPanel/SettingsMargin/SettingsContent"]
+layout_mode = 2
+
+[node name="ScaleLabel" type="Label" parent="SettingsPanel/SettingsMargin/SettingsContent/ScaleRow"]
+layout_mode = 2
+custom_minimum_size = Vector2(82, 0)
+text = "大小"
+
+[node name="ScaleSlider" type="HSlider" parent="SettingsPanel/SettingsMargin/SettingsContent/ScaleRow"]
+custom_minimum_size = Vector2(170, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 0.35
+max_value = 1.1
+step = 0.05
+value = 0.6
+
+[node name="OpacityRow" type="HBoxContainer" parent="SettingsPanel/SettingsMargin/SettingsContent"]
+layout_mode = 2
+
+[node name="OpacityLabel" type="Label" parent="SettingsPanel/SettingsMargin/SettingsContent/OpacityRow"]
+layout_mode = 2
+custom_minimum_size = Vector2(82, 0)
+text = "不透明度"
+
+[node name="OpacitySlider" type="HSlider" parent="SettingsPanel/SettingsMargin/SettingsContent/OpacityRow"]
+custom_minimum_size = Vector2(170, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 0.3
+max_value = 1.0
+step = 0.05
+value = 1.0
+
+[node name="BubbleDivider" type="HSeparator" parent="SettingsPanel/SettingsMargin/SettingsContent"]
+layout_mode = 2
+
+[node name="BubbleTitle" type="Label" parent="SettingsPanel/SettingsMargin/SettingsContent"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "对话框"
+
+[node name="BubbleDragHint" type="Label" parent="SettingsPanel/SettingsMargin/SettingsContent"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 15
+text = "预览中右键拖动对话框可移动位置"
+
+[node name="BubbleScaleRow" type="HBoxContainer" parent="SettingsPanel/SettingsMargin/SettingsContent"]
+layout_mode = 2
+
+[node name="BubbleScaleLabel" type="Label" parent="SettingsPanel/SettingsMargin/SettingsContent/BubbleScaleRow"]
+layout_mode = 2
+custom_minimum_size = Vector2(82, 0)
+text = "大小"
+
+[node name="BubbleScaleSlider" type="HSlider" parent="SettingsPanel/SettingsMargin/SettingsContent/BubbleScaleRow"]
+custom_minimum_size = Vector2(170, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 0.7
+max_value = 1.5
+step = 0.05
+value = 1.0
+
+[node name="BubbleOpacityRow" type="HBoxContainer" parent="SettingsPanel/SettingsMargin/SettingsContent"]
+layout_mode = 2
+
+[node name="BubbleOpacityLabel" type="Label" parent="SettingsPanel/SettingsMargin/SettingsContent/BubbleOpacityRow"]
+layout_mode = 2
+custom_minimum_size = Vector2(82, 0)
+text = "不透明度"
+
+[node name="BubbleOpacitySlider" type="HSlider" parent="SettingsPanel/SettingsMargin/SettingsContent/BubbleOpacityRow"]
+custom_minimum_size = Vector2(170, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 0.3
+max_value = 1.0
+step = 0.05
+value = 1.0
+
+[node name="BubbleResetButton" type="Button" parent="SettingsPanel/SettingsMargin/SettingsContent"]
+layout_mode = 2
+focus_mode = 0
+text = "重置对话框"
+
+[node name="SettingsActions" type="HBoxContainer" parent="SettingsPanel/SettingsMargin/SettingsContent"]
+layout_mode = 2
+alignment = 2
+
+[node name="ResetButton" type="Button" parent="SettingsPanel/SettingsMargin/SettingsContent/SettingsActions"]
+layout_mode = 2
+focus_mode = 0
+text = "重置智乃"
+
+[node name="ControlsResetButton" type="Button" parent="SettingsPanel/SettingsMargin/SettingsContent/SettingsActions"]
+layout_mode = 2
+focus_mode = 0
+text = "按钮归位"
+
+[node name="DoneButton" type="Button" parent="SettingsPanel/SettingsMargin/SettingsContent/SettingsActions"]
+layout_mode = 2
+focus_mode = 0
+text = "完成"
+
+[node name="BubbleAnchor" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 380.0
+offset_top = -360.0
+offset_right = 650.0
+offset_bottom = -280.0
+mouse_filter = 2
+
+[node name="BubbleGroup" type="CanvasGroup" parent="BubbleAnchor"]
+
+[node name="Bubble" type="PanelContainer" parent="BubbleAnchor/BubbleGroup"]
+layout_mode = 0
+offset_right = 270.0
+offset_bottom = 80.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_bubble")
+
+[node name="Margin" type="MarginContainer" parent="BubbleAnchor/BubbleGroup/Bubble"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 14
+theme_override_constants/margin_bottom = 8
+
+[node name="Text" type="Label" parent="BubbleAnchor/BubbleGroup/Bubble/Margin"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.94, 0.98, 1, 1)
+theme_override_font_sizes/font_size = 20
+text = "今天也一起加油。"
+autowrap_mode = 3
